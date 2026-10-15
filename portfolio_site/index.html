@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>성재빈 포트폴리오</title>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 한 열 문서형. 상단 사진+이름, 세로로 쌓인 핵심 이력, 필터 가능한 프로젝트 아코디언(상세·이미지는 펼침) */
+:root {
+  --bg: #FDFAF5;
+  --surface: #FFFFFF;
+  --ink: #33291F;
+  --ink-2: #645849;
+  --ink-3: #84766A;
+  --line: #EBE2D5;
+  --accent: #8A5A3C;
+  --mfg: #86553A;   --mfg-bg: #F7EADC;
+  --med: #655683;   --med-bg: #EFEAF4;
+  --vis: #46684F;   --vis-bg: #E6EFE5;
+  --act: #675A4E;   --act-bg: #F3EEE7;
+  --role-bg: #F7F0E6;
+  --overlay: rgba(34, 27, 20, .88);
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1E1A15; --surface: #28231C; --ink: #F5EEE4; --ink-2: #D0C3B3; --ink-3: #A99C8C;
+    --line: #40372C; --accent: #E2B48C;
+    --mfg: #E8B891; --mfg-bg: #45341F;
+    --med: #CDBFE6; --med-bg: #382F48;
+    --vis: #A8D1B0; --vis-bg: #27382B;
+    --act: #D2C6B8; --act-bg: #38312A;
+    --role-bg: #302920;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1E1A15; --surface: #28231C; --ink: #F5EEE4; --ink-2: #D0C3B3; --ink-3: #A99C8C;
+  --line: #40372C; --accent: #E2B48C;
+  --mfg: #E8B891; --mfg-bg: #45341F;
+  --med: #CDBFE6; --med-bg: #382F48;
+  --vis: #A8D1B0; --vis-bg: #27382B;
+  --act: #D2C6B8; --act-bg: #38312A;
+  --role-bg: #302920;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.7;
+  padding-block: 44px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-text-size-adjust: 100%;
+  word-break: keep-all; overflow-wrap: break-word;
+}
+.wrap { max-width: 940px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+strong { font-weight: 700; color: var(--ink); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+
+/* 헤더 */
+.hero { display: grid; grid-template-columns: 1fr 228px; gap: 24px 48px; align-items: center; }
+.hero-text { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.hero h1 { font-size: clamp(36px, 6vw, 54px); font-weight: 700; line-height: 1.15; letter-spacing: -.01em; }
+.tagline { font-size: clamp(17px, 2.2vw, 19.5px); line-height: 1.8; font-weight: 400; color: var(--ink-2); max-width: 31em; }
+.contact { display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: var(--ink-2); margin: 0; }
+.contact > div { display: grid; grid-template-columns: 6.5rem 1fr; align-items: center; gap: 12px; }
+.contact dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; color: var(--ink-3, var(--ink-2)); opacity: .8; }
+.contact dd { margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; color: var(--ink-2); }
+.contact dd a { color: var(--ink-2); text-decoration: none; }
+.contact a.btn { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
+.contact a.btn:hover { border-color: var(--accent); color: var(--accent); }
+.contact button { font: inherit; font-size: 12px; color: var(--ink-2); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; cursor: pointer; }
+.contact button:hover { border-color: var(--accent); color: var(--accent); }
+.photo { width: 228px; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* 핵심 이력: 가로로 펼친 행을 아래로 나열 */
+.fact-rows { border-top: 1px solid var(--line); }
+#h-sum { font-size: 21px; }
+.fact-rows > div { display: grid; grid-template-columns: 13rem 1fr; gap: 6px 24px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.fact-rows .k { font-size: 16px; font-weight: 700; line-height: 1.5; }
+.fact-rows ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; color: var(--ink-2); font-size: 14px; }
+
+/* 섹션 */
+.sec { display: flex; flex-direction: column; gap: 20px; }
+.sec > h2 { font-size: 24px; font-weight: 700; }
+.sec > .lead { color: var(--ink-2); }
+.strengths { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; align-items: stretch; }
+.strengths > div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; }
+.strengths h3 { font-size: 17px; font-weight: 700; }
+.strengths p { font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+.strengths ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 3px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.vision { display: grid; border-top: 1px solid var(--line); }
+.vision > div { display: grid; grid-template-columns: 15rem 1fr; gap: 8px 28px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.vision h3 { font-size: 16px; font-weight: 700; }
+.vision p { color: var(--ink-2); }
+
+/* 필터 */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.toolbar .chips { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 auto; }
+.chip-btn, .ghost-btn { font: inherit; font-size: 14px; line-height: 1; padding: 9px 14px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); }
+.chip-btn[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+.chip-btn:hover, .ghost-btn:hover { border-color: var(--accent); }
+.ghost-btn { background: transparent; }
+
+/* 프로젝트 아코디언 */
+.list { display: flex; flex-direction: column; gap: 12px; }
+details.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+details.proj[open] { border-color: var(--accent); }
+details.proj > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr 28px; gap: 16px; padding: 20px 22px; align-items: start; }
+details.proj > summary::-webkit-details-marker { display: none; }
+.sum-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; }
+.tag { font-size: 12.5px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 6px; }
+.tag.mfg { color: var(--mfg); background: var(--mfg-bg); }
+.tag.med { color: var(--med); background: var(--med-bg); }
+.tag.vis { color: var(--vis); background: var(--vis-bg); }
+.tag.act { color: var(--act); background: var(--act-bg); }
+.when { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-3); }
+.proj h3 { font-size: clamp(18px, 2.4vw, 21px); font-weight: 700; line-height: 1.4; text-wrap: balance; }
+.oneline { color: var(--ink-2); font-size: 15.5px; line-height: 1.65; }
+.chips2 { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips2 span { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; line-height: 1.3; }
+.chev { width: 28px; height: 28px; border: 1px solid var(--line); border-radius: 50%; position: relative; margin-top: 2px; }
+.chev::before { content: ""; position: absolute; left: 9px; top: 8px; width: 7px; height: 7px; border-right: 2px solid var(--ink-2); border-bottom: 2px solid var(--ink-2); transform: rotate(45deg); }
+details[open] > summary .chev::before { transform: rotate(-135deg); top: 11px; }
+details.proj > summary:hover .chev { border-color: var(--accent); }
+
+.body { padding: 4px 22px 24px; display: flex; flex-direction: column; }
+.body dl { margin: 0; display: grid; grid-template-columns: 7.5rem 1fr; border-top: 1px solid var(--line); }
+.body dt { font-size: 14px; font-weight: 700; color: var(--accent); padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); }
+.body dd { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 16px; line-height: 1.75; min-width: 0; }
+.body ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; }
+.meta { display: block; font-size: 13.5px; color: var(--ink-3); margin-top: 8px; }
+.role { background: var(--role-bg); border-radius: 10px; padding: 14px 18px; margin-top: 18px; font-size: 15.5px; }
+.role h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.linkrow { margin-top: 14px; font-size: 15px; }
+
+/* 이미지 */
+.figs-h { font-size: 14px; font-weight: 700; color: var(--accent); margin: 22px 0 10px; }
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+.figs figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.figs .zoom { display: block; padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; cursor: zoom-in; width: 100%; }
+.figs img { display: block; width: 100%; height: auto; }
+.figs figure.p .zoom { max-width: 340px; }
+.figs figcaption { font-size: 13px; line-height: 1.5; color: var(--ink-3); }
+
+/* 이력 */
+.rows { display: grid; border-top: 1px solid var(--line); }
+.rows > div { display: grid; grid-template-columns: 11rem 1fr; gap: 6px 24px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.rows .k { font-family: var(--font-mono); font-size: 13.5px; color: var(--ink-3); padding-top: 3px; }
+.rows .t { font-weight: 600; display: block; }
+.rows ul { margin: 2px 0 0; padding-left: 1.1em; color: var(--ink-2); font-size: 15px; display: flex; flex-direction: column; gap: 2px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px 48px; }
+.skills { display: grid; border-top: 1px solid var(--line); }
+.skills > div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 6px 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.skills .k { font-weight: 600; }
+.skills .v { color: var(--ink-2); min-width: 0; }
+.foot { color: var(--ink-3); font-size: 13.5px; font-family: var(--font-mono); }
+
+/* 라이트박스 */
+#lb[hidden] { display: none; }
+#lb { position: fixed; inset: 0; z-index: 50; background: var(--overlay); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+#lb img { max-width: 100%; max-height: calc(100% - 64px); width: auto; height: auto; background: #fff; border-radius: 8px; }
+#lb p { color: #E6EEF9; font-size: 14px; text-align: center; max-width: 60em; }
+#lb button { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); font: inherit; font-size: 14px; color: #E6EEF9; background: transparent; border: 1px solid rgba(230,238,249,.5); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+
+@media (max-width: 700px) {
+  body { padding-top: 28px; }
+  .wrap { gap: 44px; }
+  .hero { grid-template-columns: 1fr; }
+  .photo { width: 156px; order: -1; }
+  .contact { font-size: 15px; }
+  .contact > div { grid-template-columns: 5.2rem 1fr; gap: 6px; }
+  .contact dd { flex-wrap: nowrap; }
+  details.proj > summary { padding: 16px; gap: 12px; }
+  .body { padding: 0 16px 20px; }
+  .body dl, .vision > div, .rows > div, .skills > div, .fact-rows > div { grid-template-columns: 1fr; }
+  .body dt { padding: 12px 0 0; border-bottom: 0; }
+  .body dd { padding: 4px 0 14px; }
+  .vision > div, .rows > div, .fact-rows > div { gap: 4px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  details.proj { transition: border-color .15s; }
+  .chev::before { transition: transform .15s; }
+}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Data Scientist · AI Engineer</p>
+      <h1>성재빈</h1>
+      <p class="tagline">데이터를 기반으로 문제를 정의하고, 결과를 체계적으로 검증해 조건이 달라져도 재현되는지까지 확인하는 데이터 분석가입니다.</p>
+      <dl class="contact">
+        <div><dt>PHONE</dt><dd><a href="tel:01041161331">010-4116-1331</a></dd></div>
+        <div><dt>E-MAIL</dt><dd><span id="mail">bin990829@gmail.com</span><button type="button" id="copy-mail">복사</button></dd></div>
+        <div><dt>LOCATION</dt><dd>서울 구로구</dd></div>
+        <div><dt>BLOG</dt><dd><a class="btn" href="https://info62884.tistory.com/" target="_blank" rel="noopener">기술 블로그 열기</a></dd></div>
+      </dl>
+    </div>
+    <div class="photo"><img src="img/photo.jpg" width="600" height="799" alt="성재빈 증명사진"></div>
+  </header>
+
+  <div class="strengths">
+    <div><h3>끝까지 검증</h3><p>내부 및 외부 검증, Nested CV, 다수 ML·DL 모델 비교, 통계 검증, eXplainable AI 개별·전체 분석 등을 통해 재현성 검증</p></div>
+    <div><h3>블랙박스 모델 해석</h3><p>XAI(SHAP·LIME·LRP) 기반 판단 근거 분석, 임상의 검토, EDA 교차 검증</p></div>
+    <div><h3>현장 연결</h3><p>Streamlit·Tableau 대시보드, 작업지시서 자동 생성, Slack 전달</p></div>
+  </div>
+
+  <section class="sec" aria-labelledby="h-sum">
+    <h2 id="h-sum">성과 요약</h2>
+    <div class="fact-rows"><div><span class="k">논문 2편 1저자</span><ul><li>SCI(E) Scientific Reports <strong>1저자 2편</strong> (2024.11 뇌졸중 진단 모델, 2026.06 XAI 변수 선택법)</li><li>연구 기획, 모델링, 논문 작성까지 <strong>주도</strong></li></ul></div><div><span class="k">학회지 2편 공저자</span><ul><li>IEEE ITC-CSCC 2024 학회지 <strong>공저자 1편</strong> (NICU 기관내삽관 필요성 예측 멀티모달 연구)</li><li>한국물환경학회지 <strong>공저자 1편</strong> (퇴적물 공극수 센싱용 금아말감 미세전극 시스템)</li></ul></div><div><span class="k">학회 참석</span><ul><li>초록·포스터 직접 제작</li><li>미국 샌디에이고 NCS Annual Meeting 2024 <strong>단독 참석 및 포스터 발표</strong></li><li>일본 오키나와 ITC-CSCC 2024 <strong>공동저자로 발표 보조</strong></li></ul></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-proj">
+    <h2 id="h-proj">프로젝트</h2>
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="분야 필터">
+        <button type="button" class="chip-btn" data-filter="all" aria-pressed="true">전체</button>
+        <button type="button" class="chip-btn" data-filter="mfg" aria-pressed="false">반도체·제조</button>
+        <button type="button" class="chip-btn" data-filter="med" aria-pressed="false">의료 AI·논문</button>
+        <button type="button" class="chip-btn" data-filter="vis" aria-pressed="false">비전</button>
+      </div>
+      <button type="button" class="ghost-btn" id="toggle-all">모두 펼치기</button>
+    </div>
+    <div class="list" id="proj-list"><details class="proj" id="etch" data-domain="mfg"><summary><div class="sum-main"><div class="tags"><span class="tag mfg">반도체</span><span class="tag act">팀장</span><span class="when">팀 4명 · 2026.07~08</span></div><h3>금속 식각 공정 엔드포인트 검증과 불량 감지 시스템</h3><p class="oneline">웨이퍼 129장 EV·RFM·OES 센서 기반 Autoencoder 이상 감지, Test 20% <strong>Precision 0.80 · Recall 0.74 · AUROC 0.91</strong></p><div class="chips2"><span>Python</span><span>Autoencoder</span><span>SHAP</span><span>Streamlit</span><span>Tableau</span><span>OpenAI API</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li><strong>종점 판단 오류</strong>(Over·Under Etch)로 웨이퍼 가치 손실</li><li>공정 이상이 <strong>공정 종료 후에야</strong> 확인되는 문제</li><li>목표: 공정변수만으로 Calibration·Fault 구분하는 <strong>FDC 모델</strong>, <strong>EPD 구현 가능성</strong> 검증, 현장 대시보드</li></ul></dd><dt>데이터</dt><dd><ul><li>Lam 9600 TCP 금속 식각 <strong>웨이퍼 129장</strong> (Calibration 108, Fault 21), Wise &amp; Gallagher(1999) 데이터셋</li><li><strong>센서 3종</strong>: EV(장비 설정값·상태), RFM(RF 정합 전압·전류·위상), OES(파장별 발광 세기)</li><li>센서 오류 웨이퍼, EV 누락 웨이퍼(3122·3125번) 제외</li><li>RFM 시점 기준 <strong>최근접 EV 매칭</strong> (보간 없음, 평균 매칭 거리 0.253초), OES 진행률 정규화 후 웨이퍼 단위 매칭</li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li>배치별 군집 확인, 배치×정상·이상 조합별 <strong>20% 균등 추출</strong> Test 구성 (무작위 분할 시 특정 배치 쏠림, 변경 후 전체 지표 0.7 이상)</li><li>임피던스 정합 상태 <strong>파생변수 5개</strong> 생성 (하부 RF 반사율, 상부 TCP 반사율, 전압/전류 비, 3차 고조파/기본파 전류 비, 공정 진행률)</li><li>입력 4종 × 모델 5종 = <strong>20개 조합</strong>, Recall 우선 비교, 상위 3개 모두 <strong>Autoencoder</strong></li><li>시점 단위 이상 판정, Train 4-Fold로 <strong>임계값 0.5273</strong> 결정</li><li>OES Al 395.8nm·Ti 336.98nm 교차점, TCP Load(Endpt A 상관계수 +0.688) Endpt 예측 보조 변수 지정</li></ul></dd><dt>결과</dt><dd><ul><li>Test 695개 시점: Fault 111개 중 <strong>82개 검출</strong>, 정상 오탐 21개</li><li>임계값 조정으로 Recall 0.74 유지, <strong>Precision 0.68 → 0.80</strong>, F1 0.71 → 0.77</li><li><strong>AUROC 0.91</strong>, AUPRC 0.83</li><li><strong>SHAP</strong> 기반 전체·웨이퍼별·시점별 변수 기여도 분석</li></ul></dd><dt>현장 연결</dt><dd><ul><li><strong>관리자 메뉴</strong>: EDA, 모델 성능, 임계값 시뮬레이터, SHAP 해석, OpenAI API 질의</li><li><strong>공정 담당자 메뉴</strong>: 조치 필요 웨이퍼 현황판, 이상 판정·조치 안내, 작업지시서 Word 자동 생성</li><li><strong>Tableau</strong> 품질 모니터링 대시보드 <strong>Streamlit 임베딩</strong>, 사용 가이드 제작</li></ul></dd><dt>한계</dt><dd><ul><li>축적 데이터 재현 검증 단계</li><li>실시간 수집 데이터 검증, Endpt 예측 모델 구축은 남은 과제</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="데이터 구성: 웨이퍼 129장, 센서 3종, 측정 오류 제외" aria-label="이미지 확대: 데이터 구성: 웨이퍼 129장, 센서 3종, 측정 오류 제외"><img src="img/etch-data.jpg" width="1500" height="742" alt="데이터 구성: 웨이퍼 129장, 센서 3종, 측정 오류 제외" loading="lazy"></button><figcaption>데이터 구성: 웨이퍼 129장, 센서 3종, 측정 오류 제외</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="OES 두 파장 교차점과 TCP Load 보조 변수" aria-label="이미지 확대: OES 두 파장 교차점과 TCP Load 보조 변수"><img src="img/etch-oes.jpg" width="1500" height="742" alt="OES 두 파장 교차점과 TCP Load 보조 변수" loading="lazy"></button><figcaption>OES 두 파장 교차점과 TCP Load 보조 변수</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="임계값 조정 결과: Recall 0.74 유지, Precision 0.68 → 0.80" aria-label="이미지 확대: 임계값 조정 결과: Recall 0.74 유지, Precision 0.68 → 0.80"><img src="img/etch-result.jpg" width="1500" height="742" alt="임계값 조정 결과: Recall 0.74 유지, Precision 0.68 → 0.80" loading="lazy"></button><figcaption>임계값 조정 결과: Recall 0.74 유지, Precision 0.68 → 0.80</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="관리자·공정 담당자 대시보드 메뉴 설계" aria-label="이미지 확대: 관리자·공정 담당자 대시보드 메뉴 설계"><img src="img/etch-dashboard.jpg" width="1500" height="742" alt="관리자·공정 담당자 대시보드 메뉴 설계" loading="lazy"></button><figcaption>관리자·공정 담당자 대시보드 메뉴 설계</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>팀장, 팀원 역할 분담</li><li>모델링, 대시보드 구축, 발표 주도</li></ul></div></div></details><details class="proj" id="smt" data-domain="mfg"><summary><div class="sum-main"><div class="tags"><span class="tag mfg">제조 · SMT</span><span class="tag act">팀장</span><span class="when">팀 4명 · 2026.08~10</span></div><h3>이미지·센서 멀티모달 기반 SMT 공정 불량 탐지·관리 시스템</h3><p class="oneline">정상 오분류율 <strong>3.05% → 1.85% (39% 감소)</strong>, 추가 파라미터 <strong>1.31%</strong></p><div class="chips2"><span>Python</span><span>YOLOv11</span><span>Streamlit</span><span>Tableau</span><span>Slack</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>미세 변화에도 불량 발생, 검사 결과와 공정 환경 데이터 <strong>분리 관리</strong>로 원인 파악 어려움</li><li>목표: 검사 이미지·센서 결합 <strong>불량 위치·유형 검출</strong>, 공정 이상 <strong>사전 알림</strong> 현장형 시스템</li></ul></dd><dt>데이터</dt><dd><ul><li>AI-Hub SMT 멀티모달 데이터, 검사 이미지 <strong>46,220장</strong> (불량 16종, bounding box)</li><li>이미지별 센서 5종 매칭 (온도·습도·진동·가속도·소음, 1Hz 5초)</li><li>소음 75dB 기준만으로 정상·불량 <strong>99.96% 구분</strong>, 수집업체·수집일 편중 확인 후 수집업체·촬영 시각 정보 제외</li><li>같은 기판 연속 촬영 이미지 혼입 방지, <strong>세션 단위</strong> 학습·검증·평가 분할 (데이터 누수 차단)</li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li>이미지 단독 YOLO11n, 납고드름·밀림·핀홀 불량 <strong>16~19% 정상 오분류</strong> 확인</li><li>'<strong>정상 오분류율</strong>' 평가지표 신규 정의</li><li>센서 결합 방식(Intermediate·FiLM) × 입력 방식(원본 25개·요약통계 35개) 4개 모델 비교</li><li>성능 동등 모델 중 추가 파라미터 최소 <strong>FiLM + 요약통계</strong> 최종 선정</li></ul></dd><dt>검증</dt><dd><ul><li><strong>Test 4,322장</strong>, 이미지 단독 모델 대비 mAP50-95·정상 오분류율 비교</li><li>모델별 1회 학습 한계 고려, mAP50-95 차이 0.01 이내·오분류율 차이 검정 p≥0.05를 <strong>동등 기준</strong>으로 정의</li><li>센서와 라벨 <strong>과분리 데이터 특성 한계</strong> 명시, 현장 센서 데이터 재검증 개선 과제 도출</li></ul></dd><dt>결과</dt><dd><ul><li>정상 오분류율 <strong>3.05% → 1.85% (39% 감소)</strong>, mAP50-95 0.798 → 0.809</li><li><strong>핀홀 16.1% → 3.9%</strong>, <strong>밀림 16.8% → 9.1%</strong>, 납고드름 변화 없음 (표본 113개 부족)</li><li><strong>요약통계 입력</strong>이 원본보다 유리, FiLM은 Intermediate 대비 추가 파라미터 약 1/3</li></ul></dd><dt>현장 연결</dt><dd><ul><li><strong>작업자 화면</strong>: Streamlit 이미지별 불량 위치·유형 실시간 판정, 불량률·센서 관리도</li><li><strong>총 공정 책임자 화면</strong>: Tableau AI 판정 검증 센터(유출·과검), 작업지시서 자동 생성, Slack 전달</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="센서 결합 구조 비교: Intermediate Fusion, FiLM Fusion" aria-label="이미지 확대: 센서 결합 구조 비교: Intermediate Fusion, FiLM Fusion"><img src="img/smt-arch.jpg" width="1300" height="798" alt="센서 결합 구조 비교: Intermediate Fusion, FiLM Fusion" loading="lazy"></button><figcaption>센서 결합 구조 비교: Intermediate Fusion, FiLM Fusion</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="Streamlit 실시간 품질 검사 화면" aria-label="이미지 확대: Streamlit 실시간 품질 검사 화면"><img src="img/smt-live.jpg" width="1286" height="772" alt="Streamlit 실시간 품질 검사 화면" loading="lazy"></button><figcaption>Streamlit 실시간 품질 검사 화면</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="불량 관리도, 센서 이상도" aria-label="이미지 확대: 불량 관리도, 센서 이상도"><img src="img/smt-chart2.jpg" width="1300" height="715" alt="불량 관리도, 센서 이상도" loading="lazy"></button><figcaption>불량 관리도, 센서 이상도</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="Tableau AI 판정 검증 센터" aria-label="이미지 확대: Tableau AI 판정 검증 센터"><img src="img/smt-verify.jpg" width="1300" height="724" alt="Tableau AI 판정 검증 센터" loading="lazy"></button><figcaption>Tableau AI 판정 검증 센터</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>팀장, 일정·역할 조율, 최종 발표</li><li>EDA, 모델 비교 설계 참여</li><li>Streamlit 설계·구현 주도, Tableau·작업지시서 연동 구축</li></ul></div></div></details><details class="proj" id="xai" data-domain="med"><summary><div class="sum-main"><div class="tags"><span class="tag med">의료 AI · 논문</span><span class="tag act">1저자</span><span class="when">Scientific Reports 2026.06</span></div><h3>XAI 기반 변수 선택 방법론, ICU 인공호흡기 이탈 예측</h3><p class="oneline">SHAP·LIME·LRP 통합 변수 선택법 설계, 외부 데이터셋 <strong>7개</strong> 재현성 검증</p><div class="chips2"><span>Python</span><span>TensorFlow</span><span>Scikit-learn</span><span>SHAP</span><span>LIME</span><span>LRP</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li><strong>ICU 인공호흡기 이탈 시점</strong>: 지연 시 합병증, 조기 시 <strong>재삽관 위험</strong></li><li>기존 연구: 성능 위주 설계, 한두 가지 통계 해석으로 <strong>설명력·신뢰성 부족</strong></li></ul></dd><dt>데이터</dt><dd><ul><li><strong>MIMIC-IV</strong> 기계환기 환자 <strong>19,567명</strong>, 변수 48개, extubation 성공·실패 데이터셋</li><li><strong>외부 데이터셋 7개</strong> 추가 확보·전처리</li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li><strong>SHAP·LIME·LRP</strong> 변수 중요도 통합, TP 기준 재정렬 <strong>컨센서스 특징선택</strong> 설계</li><li><strong>Nested CV</strong>(4×4, 5회 반복)로 다수 ML·DL 모델 재현성 검증</li></ul></dd><dt>검증</dt><dd><ul><li>p-value, Bhattacharyya Distance, RFE 대비 <strong>성능 비교</strong>, 선택 특징 재학습 성능 향상 확인</li><li>외부 의료 데이터셋 7개 적용, <strong>재현성·일반화</strong> 검증</li></ul></dd><dt>결과</dt><dd><ul><li>변수 <strong>약 35% 축소</strong>, AUROC 0.8455 → <strong>0.8527</strong>, Sensitivity 0.8275 유지</li><li>외부 데이터셋 <strong>대부분 성능 개선</strong>, 다중 설명기 접근의 신뢰성 확인</li></ul><span class="meta">SCI(E) Scientific Reports 16(1), 26582 (2026), &quot;Feature Selection Methodology Based on Explainable AI: Application in Predicting Extubation Success in the Intensive Care Unit&quot;</span></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="Graphical Abstract 직접 제작" aria-label="이미지 확대: Graphical Abstract 직접 제작"><img src="img/xai-abstract.jpg" width="1300" height="1423" alt="Graphical Abstract 직접 제작" loading="lazy"></button><figcaption>Graphical Abstract 직접 제작</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="게재 논문 첫 페이지" aria-label="이미지 확대: 게재 논문 첫 페이지"><img src="img/xai-paper.jpg" width="930" height="876" alt="게재 논문 첫 페이지" loading="lazy"></button><figcaption>게재 논문 첫 페이지</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li><strong>1저자</strong>, 연구 기획부터 논문 작성·reviewer revision 주도</li><li>3개 XAI 통합 방법론, TP 기준 재정렬 로직 설계·구현</li><li>임상의 논의로 임상적 타당성 조정, 공학박사 자문으로 검증 설계 보완</li><li>Graphical Abstract, 논문 Figure 전체 직접 제작</li></ul></div></div></details><details class="proj" id="gas" data-domain="mfg"><summary><div class="sum-main"><div class="tags"><span class="tag mfg">제조 · 안전</span><span class="tag act">팀장 · 최우수상</span><span class="when">팀 5명 · 부트캠프 팀 프로젝트</span></div><h3>가스 센서 데이터 분석 기반 산업 안전 관리</h3><p class="oneline">공정별 <strong>700℃ 이하 저온 구간 위험 패턴</strong> 발견, <strong>Recall 최우선</strong> 모델링</p><div class="chips2"><span>Python</span><span>Pandas</span><span>XGBoost</span><span>SHAP</span><span>Streamlit</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>제공 데이터: 가스 농도(CO·H₂·CH₄·CO₂), 온도·습도, 공정 구분(절단·주조·압출)별 위험도(0~1) 점수뿐, <strong>현장 위험 판단 기준 부재</strong></li><li>목표: 통계 기준 <strong>정상·주의·위험 3단계</strong> 정의, 예측 모델 확장, 조기 경보 체계</li></ul></dd><dt>데이터</dt><dd><ul><li>가스 센서 <strong>100건</strong>, 결측·IQR 이상치 없음</li><li>위험도 평균·Q3(≈0.76) 기준 <strong>3단계 정의</strong></li></ul></dd><dt>분석 (팀)</dt><dd><ul><li><strong>심슨의 역설</strong> 고려, 공정별 분석 제안</li><li>주조·절단 공정 <strong>700℃ 이하 구간</strong> "주의" 단계 반복 발견, <strong>불완전연소 가설</strong> 수립</li><li><strong>폐기물관리법 소각시설 기준</strong>(800℃ 이상 유지, CO 농도 관리) 대조로 근거 보강</li><li>데이터 기반 안전 관리 체계 팀 결론, 운영진·수강생 투표 <strong>1위 최우수상</strong></li></ul></dd><dt>모델링 (개인)</dt><dd><ul><li>XGBoost·CatBoost·LightGBM·RandomForest <strong>4개 모델</strong>, <strong>SMOTE</strong>로 불균형 보완</li><li>"주의" 비율 25%, False Negative 비용이 큰 안전 이슈 특성상 <strong>Recall 최우선</strong>, Precision·F1·AUROC·PR-AUC 병행 비교</li></ul></dd><dt>결과</dt><dd><ul><li>SHAP 결과 <strong>CO·H₂ 최대 기여</strong>, EDA 저온 구간 패턴과 두 방법으로 <strong>교차 검증</strong></li><li>현장 모니터링 우선순위 변수 <strong>CO·H₂ 확정</strong></li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="공정별 심화 분석: 저온 구간 주의 단계 집중" aria-label="이미지 확대: 공정별 심화 분석: 저온 구간 주의 단계 집중"><img src="img/gas-a.jpg" width="831" height="461" alt="공정별 심화 분석: 저온 구간 주의 단계 집중" loading="lazy"></button><figcaption>공정별 심화 분석: 저온 구간 주의 단계 집중</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="주조 공정 700℃ 이하 구간 가설과 추론" aria-label="이미지 확대: 주조 공정 700℃ 이하 구간 가설과 추론"><img src="img/gas-b.jpg" width="828" height="460" alt="주조 공정 700℃ 이하 구간 가설과 추론" loading="lazy"></button><figcaption>주조 공정 700℃ 이하 구간 가설과 추론</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="결론: 데이터 기반 안전 관리 체계" aria-label="이미지 확대: 결론: 데이터 기반 안전 관리 체계"><img src="img/gas-c.jpg" width="832" height="461" alt="결론: 데이터 기반 안전 관리 체계" loading="lazy"></button><figcaption>결론: 데이터 기반 안전 관리 체계</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="Streamlit 대시보드 실시간 위험 판정" aria-label="이미지 확대: Streamlit 대시보드 실시간 위험 판정"><img src="img/gas-d1.jpg" width="910" height="440" alt="Streamlit 대시보드 실시간 위험 판정" loading="lazy"></button><figcaption>Streamlit 대시보드 실시간 위험 판정</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="Streamlit 대시보드 공정별 위험도 분석" aria-label="이미지 확대: Streamlit 대시보드 공정별 위험도 분석"><img src="img/gas-d2.jpg" width="907" height="428" alt="Streamlit 대시보드 공정별 위험도 분석" loading="lazy"></button><figcaption>Streamlit 대시보드 공정별 위험도 분석</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>팀장, 팀원 5명 역할 분담</li><li>4개 모델 비교 파이프라인 직접 설계·구현</li><li>SHAP 해석, EDA 교차 검증 직접 수행</li><li>Streamlit 대시보드 구현, 실시간 모니터링 형태 배포</li></ul></div><p class="linkrow"><a href="https://clh6duitl8dabvucwsgjwi.streamlit.app/" target="_blank" rel="noopener">Streamlit 대시보드 열기</a></p></div></details><details class="proj" id="stroke" data-domain="med"><summary><div class="sum-main"><div class="tags"><span class="tag med">의료 AI · 논문</span><span class="tag act">1저자 · 단독 모델링</span><span class="when">Scientific Reports 2024.11</span></div><h3>비신경계 ICU 환자 급성 신경학적 증상 기반 뇌졸중 진단 모델</h3><p class="oneline">비신경계 ICU 환자의 <strong>신경계 질환(뇌졸중) 발생 가능성</strong> 예측, 내부 검증 <strong>AUROC 0.820 · 민감도 0.896</strong>, 외부 기관 검증 <strong>AUROC 0.733</strong></p><div class="chips2"><span>Python</span><span>CatBoost</span><span>TensorFlow</span><span>SHAP</span><span>Bayesian Optimization</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>비신경계 질환으로 입원한 ICU 환자 중 <strong>신경계 질환(뇌졸중) 발생 가능성</strong>을 예측하는 연구</li><li>비신경계 ICU 환자 뇌졸중 발생률 일반 인구의 약 <strong>2배</strong>, 이 환자군을 다룬 <strong>데이터 자체가 의미 있는 연구</strong></li><li>ICU 영상 검사(MRI·CT) 지연으로 신경학적 평가 지연, <strong>영상 없이 EHR만으로</strong> 조기 선별 모델 필요</li></ul></dd><dt>데이터</dt><dd><ul><li>충북대병원 <strong>206명</strong>(내부), 충남대병원 <strong>45명</strong>(외부) ICU 입원환자</li><li>기저질환·혈액응고검사·처치·투약 등 <strong>증상 발현 전 EHR</strong></li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li>범주형 변수 다수 특성 고려 <strong>CatBoost</strong> 채택, 여러 ML 모델과 비교</li><li><strong>Bayesian Optimization</strong> 하이퍼파라미터 최적화, <strong>4-fold CV</strong> 내부 검증</li></ul></dd><dt>검증</dt><dd><ul><li><strong>외부 기관(CNUH)</strong> 데이터 적용, 기관 간 일반화 확인</li><li><strong>SHAP</strong> 예측 근거(운동기능, 항응고제 사용, 이완기혈압, 발작 여부) 시각화, 임상의 타당성 검토</li></ul></dd><dt>결과</dt><dd><ul><li><strong>내부 검증</strong> 정확도 0.756 · 민감도 <strong>0.896</strong> · AUROC <strong>0.820</strong>, 높은 선별 성능</li><li><strong>외부 검증</strong> 정확도 0.778 · 민감도 0.750 · AUROC <strong>0.733</strong></li><li>기관 간 <strong>과적합 없는 일반화</strong>, 영상 없는 임상 설명 가능 조기 선별 제시</li></ul><span class="meta">SCI(E) Scientific Reports 14(1), 29610 (2024), &quot;Machine learning-based diagnostic model for stroke in non-neurological intensive care unit patients with acute neurological manifestations&quot;</span></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="게재 논문 초록" aria-label="이미지 확대: 게재 논문 초록"><img src="img/stroke-paper.jpg" width="467" height="471" alt="게재 논문 초록" loading="lazy"></button><figcaption>게재 논문 초록</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="NCS Annual Meeting 2024 발표 포스터 직접 제작" aria-label="이미지 확대: NCS Annual Meeting 2024 발표 포스터 직접 제작"><img src="img/stroke-poster.jpg" width="710" height="720" alt="NCS Annual Meeting 2024 발표 포스터 직접 제작" loading="lazy"></button><figcaption>NCS Annual Meeting 2024 발표 포스터 직접 제작</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>비신경계 환자 대상 뇌졸중 예측 모델링 <strong>단독 수행</strong>, 1저자</li><li>이질적 임상 데이터 통계 분석, 결측·이상치 처리 기준 직접 설계</li><li>Bayesian Optimization 탐색 범위·평가 기준 설계, 외부 검증 체계 구성</li><li>학회 초록·포스터 직접 제작, 미국 샌디에이고 NCS 2024 단독 참석·발표</li></ul></div></div></details><details class="proj" id="security3d" data-domain="vis mfg"><summary><div class="sum-main"><div class="tags"><span class="tag vis">비전</span><span class="tag mfg">반도체 보안</span><span class="tag act">개인 프로젝트</span></div><h3>반도체 보안구역 비인가 물품 반입 3D 실시간 감지 시스템</h3><p class="oneline">2D 화면상 거리만 재지 않고 <strong>3D 깊이 비율</strong>로 실제 위치를 판단, 깊이 차이 <strong>35% 이내</strong>만 같은 위치로 인정</p><div class="chips2"><span>Python</span><span>YOLOv8</span><span>ByteTrack</span><span>MiDaS</span><span>OpenCV</span><span>NumPy</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>기존 2D 방식: 사람 Box(+20% margin)와 물품 Box <strong>화면상 겹침</strong>으로 소지 판단 (YOLOv8)</li><li><strong>깊이 정보 부재</strong>: 사람 뒤 책상 위 노트북 <strong>오탐</strong>, 앞뒤로 선 두 사람 중 소지자 구분 불가</li><li>목표: 특수 장비 없이 <strong>일반 웹캠 1대</strong>로 사람과 물품이 같은 위치인지 판단</li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li><strong>YOLOv8 + ByteTrack</strong> 탐지·추적, <strong>MiDaS 단안 깊이 추정</strong> 병렬 수행, 연속 3프레임 유지 시 경고</li><li><strong>미터 환산 대신 깊이 비율</strong>: 두 깊이의 큰 값 ÷ 작은 값에서 1을 뺀 gap (깊이 2.0과 5.0이면 150%), 알 수 없는 스케일 계수 약분으로 <strong>사람 키 가정·보정 절차 불필요</strong></li><li>객체 대표 깊이: 박스 <strong>중앙 50% 영역 중앙값</strong> (블루시그널 인턴 경험 반영, 빈 공간·배경 픽셀 영향 감소)</li><li>판단 조건: <strong>화면 겹침 30% 이상 + 깊이 gap 35% 이하</strong>, 물품이 여러 사람과 겹치면 <strong>깊이가 가장 비슷한 사람</strong>에게 배정</li><li><strong>2D·3D 판단 동시 계산</strong>, 2D만 경고였던 케이스는 파란 박스와 사유로 표시, 걸러진 건수 누적</li><li>깊이 추정 <strong>3프레임마다 1회</strong>, 축소 이미지(폭 384) 추론으로 실시간 성능 확보</li></ul></dd><dt>검증</dt><dd><ul><li>기하·판단 로직 별도 모듈 분리, <strong>단위 테스트 19개</strong> 통과</li><li><strong>스케일 불변성 테스트</strong>: 장면 깊이에 0.02·1·57배를 곱해도 판단 동일</li><li>핵심 시나리오: <strong>화면 겹침 + 깊이 2.5배 차이 물품</strong>, 2D 경고 vs 깊이 방식 제외 확인</li><li>실제 웹캠 실행: 손에 든 휴대폰 <strong>depth gap 9%</strong> 경고, CPU 환경 2.4 FPS</li><li>경고 시 깊이 gap·겹침 비율 CSV 기록, 임계값 조정과 오탐 원인 분석 근거</li></ul></dd><dt>한계</dt><dd><ul><li>비율 기준 특성상 카메라에서 멀수록 같은 %가 더 큰 실제 거리, <strong>현장 영상으로 허용치 재설정</strong> 필요</li><li>현장 성능 정량 검증 미실시, 조명·작은 물체·가림 상황 깊이 불안정</li><li>다음 단계: 프레임 간 깊이 평활화, 현장 물품 Custom YOLO 학습</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="목표 화면 예시: AI 생성 개념 일러스트, 표기 수치는 예시" aria-label="이미지 확대: 목표 화면 예시: AI 생성 개념 일러스트, 표기 수치는 예시"><img src="img/sec3d-goal.jpg" width="1280" height="853" alt="목표 화면 예시: AI 생성 개념 일러스트, 표기 수치는 예시" loading="lazy"></button><figcaption>목표 화면 예시: AI 생성 개념 일러스트, 표기 수치는 예시</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="실제 실행 화면: 좌 일반 카메라 탐지 결과, 우 거리 추정 히트맵" aria-label="이미지 확대: 실제 실행 화면: 좌 일반 카메라 탐지 결과, 우 거리 추정 히트맵"><img src="img/sec3d-run.jpg" width="1280" height="513" alt="실제 실행 화면: 좌 일반 카메라 탐지 결과, 우 거리 추정 히트맵" loading="lazy"></button><figcaption>실제 실행 화면: 좌 일반 카메라 탐지 결과, 우 거리 추정 히트맵</figcaption></figure></div></div></details><details class="proj" id="afm" data-domain="vis"><summary><div class="sum-main"><div class="tags"><span class="tag vis">비전</span><span class="tag act">단독 연구</span><span class="when">고려대 NI3 · CURT</span></div><h3>뇌 아밀로이드 섬유 AFM 이미지 노이즈 제거 모델</h3><p class="oneline">수작업 threshold·포토샵 제거 과정을 <strong>ResUNet denoising</strong>으로 자동화</p><div class="chips2"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>ResUNet</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>AFM 이미지 노이즈·불순물, 이미지마다 <strong>threshold 수동 지정</strong> 후 포토샵 제거</li><li><strong>작업 시간 과다</strong>, <strong>재현성 낮음</strong></li></ul></dd><dt>데이터</dt><dd><ul><li>512×512×1 흑백 AFM 이미지, 원본(노이즈 포함)과 정답(수작업 제거) 쌍</li><li>데이터 부족 대응 <strong>data augmentation</strong></li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li>섬유 구조 보존 목적 <strong>ResUNet</strong> (encoder-decoder + residual connection) 채택</li><li>노이즈 규모가 다른 <strong>두 이미지 유형별</strong> epoch·batch size·learning rate 조정, 두 세팅 구축</li></ul></dd><dt>검증</dt><dd><ul><li>train·validation loss curve, 두 세팅 모두 <strong>loss 0.002~0.011 수렴</strong></li><li>Original, Predict, Target 3종 이미지 나란히 비교 <strong>정성 평가</strong></li></ul></dd><dt>결과</dt><dd><ul><li>미세 노이즈 이미지: <strong>대부분 제거</strong>, 섬유 구조 <strong>선명 복원</strong></li><li>큰 소금 자국·불순물 이미지: 결함 제거, 구조 뚜렷</li><li>노이즈 유형별 <strong>모델 설정 튜닝 필요성</strong> 확인</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class=""><button type="button" class="zoom" data-cap="결과 1: 미세 노이즈 이미지 복원" aria-label="이미지 확대: 결과 1: 미세 노이즈 이미지 복원"><img src="img/afm-r1.jpg" width="758" height="560" alt="결과 1: 미세 노이즈 이미지 복원" loading="lazy"></button><figcaption>결과 1: 미세 노이즈 이미지 복원</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="결과 2: 큰 소금 자국·불순물 이미지 복원" aria-label="이미지 확대: 결과 2: 큰 소금 자국·불순물 이미지 복원"><img src="img/afm-r2.jpg" width="762" height="552" alt="결과 2: 큰 소금 자국·불순물 이미지 복원" loading="lazy"></button><figcaption>결과 2: 큰 소금 자국·불순물 이미지 복원</figcaption></figure><figure class=""><button type="button" class="zoom" data-cap="CURT 프로그램 연구보고서" aria-label="이미지 확대: CURT 프로그램 연구보고서"><img src="img/afm-curt.jpg" width="604" height="568" alt="CURT 프로그램 연구보고서" loading="lazy"></button><figcaption>CURT 프로그램 연구보고서</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>고려대 딥러닝 연구실(NI3) 학부연구생 1년, 연구 <strong>단독 진행</strong></li><li>노이즈 유형별 두 세팅 독립 설계·실험</li><li>augmentation 전략 직접 설계</li><li>CURT 프로그램 참여, 우수팀 선발·장학금</li></ul></div></div></details><details class="proj" id="depth" data-domain="vis"><summary><div class="sum-main"><div class="tags"><span class="tag vis">비전</span><span class="tag act">AI 개발 인턴</span><span class="when">블루시그널 2022.01~02</span></div><h3>단안 카메라 Depth Estimation 기반 보행 장애물 거리 감지</h3><p class="oneline">일반 카메라 영상만으로 장애물 접근 위험을 판단하는 <strong>거리 계산 로직</strong> 설계</p><div class="chips2"><span>Python</span><span>PyTorch</span><span>OpenCV</span><span>YOLOv4</span><span>HR-Depth</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>문제 정의</dt><dd><ul><li>시각장애인·교통약자 보행 내비게이션 앱, 카메라 영상 기반 전방 <strong>장애물 거리 판단·위험 알림</strong> 필요</li><li>기업 미팅으로 요구사항 2축 확인(휠체어 부착 카메라 영상 분류, CCTV 기반 실시간 위치 파악), 담당 범위는 후자 중 <strong>예상치 못한 장애물 접근 알람</strong></li></ul></dd><dt>데이터</dt><dd><ul><li>KITTI 초기 데이터셋 구성, 인접 프레임 유사도 과적합 방지 <strong>4장 중 1장 샘플링</strong></li><li>스마트폰 보행 영상 프레임 캡처, <strong>자체 테스트셋 구축</strong></li></ul></dd><dt>분석 · 모델링</dt><dd><ul><li>pretrained self-supervised depth estimation(LapDepth, HR-Depth) 조정</li><li>PyTorch 코드 분석·디버깅(CUDA/CPU 디바이스 매핑 오류 해결), <strong>HR-Depth</strong> 최종 채택</li></ul></dd><dt>검증</dt><dd><ul><li>자체 촬영 이미지 depth map 시각 확인 (가까운 물체 밝게, 먼 배경 어둡게)</li><li>직접 구현 U-Net baseline 대비 <strong>pretrained 모델 우수</strong> 재확인</li><li>RGB 3채널 원근 비교 기준 모호 확인, <strong>흑백 단일 채널</strong> 전환</li></ul></dd><dt>결과</dt><dd><ul><li><strong>상대 거리 공식</strong> distance = 255에서 픽셀값 차감, YOLOv4 bounding box 결합</li><li>box 내부 픽셀 평균 사용(차량 하부 빈 공간 왜곡 방지), 프로토타입 완성</li><li>Depth map만으로 <strong>절대 거리 산출 불가</strong>, <strong>객체 탐지 결합 필요</strong> 결론</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class="p"><button type="button" class="zoom" data-cap="인턴 연구일지: bounding box 내부 픽셀 평균 기반 거리 계산" aria-label="이미지 확대: 인턴 연구일지: bounding box 내부 픽셀 평균 기반 거리 계산"><img src="img/depth-1.jpg" width="502" height="643" alt="인턴 연구일지: bounding box 내부 픽셀 평균 기반 거리 계산" loading="lazy"></button><figcaption>인턴 연구일지: bounding box 내부 픽셀 평균 기반 거리 계산</figcaption></figure><figure class="p"><button type="button" class="zoom" data-cap="인턴 연구일지: HR-Depth 사전학습 모델 분석" aria-label="이미지 확대: 인턴 연구일지: HR-Depth 사전학습 모델 분석"><img src="img/depth-2.jpg" width="442" height="577" alt="인턴 연구일지: HR-Depth 사전학습 모델 분석" loading="lazy"></button><figcaption>인턴 연구일지: HR-Depth 사전학습 모델 분석</figcaption></figure></div><div class="role"><h4>본인 기여</h4><ul><li>자체 U-Net 한계(오버피팅, 원근감 미표현) 진단, 멘토 피드백 수용 후 pretrained 활용 전환</li><li>TensorFlow 중심 경험에서 PyTorch HR-Depth 코드 분석·디버깅</li><li>RGB·흑백 채널, bounding box 좌표 선택(중심점 vs 내부 평균) 실험 검증</li></ul></div></div></details><details class="proj" id="writing" data-domain="act"><summary><div class="sum-main"><div class="tags"><span class="tag act">활동</span><span class="when">2026.04~</span></div><h3>기술 블로그 90편 이상, 파이썬 학습 만화 연재, 콘텐츠 자동화</h3><p class="oneline">학습 내용 기록·공유, 쉬운 설명을 통한 재정리</p><div class="chips2"><span>ChatGPT</span><span>Claude</span><span>Velog</span><span>Tistory</span></div></div><span class="chev" aria-hidden="true"></span></summary><div class="body"><dl><dt>블로그 운영</dt><dd><ul><li>2026.04 시작, Velog 약 45편 작성 후 Tistory 이전, 약 50편 추가, 누적 <strong>90편 이상</strong></li><li><strong>주제 다양화</strong>: 파이썬 만화, 딥러닝 논문 리뷰, 개인 연구, 통계·데이터 기사 리뷰</li></ul></dd><dt>학습 만화 연재</dt><dd><ul><li>2026.07부터 파이썬 기초~응용 <strong>학습 만화 기획·연재</strong></li><li>커리큘럼, 회차별 스토리라인, 캐릭터·세계관 직접 설계</li><li>평일 오전 8시 다음 화 스토리라인·블로그용 HTML·8컷 이미지 <strong>자동 제공 시스템</strong> 구축</li></ul></dd><dt>콘텐츠 자동화</dt><dd><ul><li>ChatGPT·Claude 기반 <strong>콘텐츠 자동화 시스템</strong> 구축</li><li>원고 기획~초안 작성 프롬프트 사전 설계, 빠른 발행 체계</li></ul></dd></dl><h4 class="figs-h">관련 이미지 (클릭 시 확대)</h4><div class="figs"><figure class="p"><button type="button" class="zoom" data-cap="블로그 예시: VGGNet 논문으로 배우는 이미지 딥러닝" aria-label="이미지 확대: 블로그 예시: VGGNet 논문으로 배우는 이미지 딥러닝"><img src="img/blog-vgg.jpg" width="601" height="802" alt="블로그 예시: VGGNet 논문으로 배우는 이미지 딥러닝" loading="lazy"></button><figcaption>블로그 예시: VGGNet 논문으로 배우는 이미지 딥러닝</figcaption></figure><figure class="p"><button type="button" class="zoom" data-cap="블로그 예시: VGGNet 이후의 모델, ResNet과 Skip Connection" aria-label="이미지 확대: 블로그 예시: VGGNet 이후의 모델, ResNet과 Skip Connection"><img src="img/blog-resnet.jpg" width="592" height="808" alt="블로그 예시: VGGNet 이후의 모델, ResNet과 Skip Connection" loading="lazy"></button><figcaption>블로그 예시: VGGNet 이후의 모델, ResNet과 Skip Connection</figcaption></figure><figure class="p"><button type="button" class="zoom" data-cap="파이썬 학습 만화 예시" aria-label="이미지 확대: 파이썬 학습 만화 예시"><img src="img/comic-1.jpg" width="1024" height="1536" alt="파이썬 학습 만화 예시" loading="lazy"></button><figcaption>파이썬 학습 만화 예시</figcaption></figure></div><p class="linkrow"><a href="https://info62884.tistory.com/" target="_blank" rel="noopener">블로그 열기</a></p></div></details></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-career">
+    <h2 id="h-career">경력과 활동</h2>
+    <div class="rows"><div><span class="k">2026.04~ 진행 중</span><div><span class="t">팀스파르타 내일배움캠프 제조 품질 AX 전문가 부트캠프</span><ul><li>제조 데이터 팀 프로젝트 5회, 3회 팀장</li><li>발표회 발표, 질의응답 대응</li><li>프로젝트 우수팀, 우수 수강생, 우수 블로거 선정</li></ul></div></div><div><span class="k">2023.10~2025.08</span><div><span class="t">충북대학교병원 AI센터 AI연구개발팀</span><ul><li>의료 데이터셋 구축·전처리, 모델 개발, 내부·외부 검증</li><li>논문·사업계획서 작성</li><li>코드 컨벤션 자동화(Black·Pylint) 환경 구축, 매뉴얼 배포</li></ul></div></div><div><span class="k">2022.01~2022.02</span><div><span class="t">블루시그널 AI 개발 인턴</span><ul><li>시각장애인 보행 내비게이션 장애물 거리 감지 기능 개발 기획</li></ul></div></div><div><span class="k">2021.03~2022.01</span><div><span class="t">고려대학교 NI3 연구실 학부연구생</span><ul><li>딥러닝·의료영상 연구, 논문 스터디, AFM 노이즈 제거 연구</li></ul></div></div><div><span class="k">2020.03~2021.02</span><div><span class="t">고려대학교 AEDL 연구실 학부연구생</span><ul><li>환경부 과제: PoE 기반 장거리 전력·데이터 전송 시스템, LabVIEW 자동 측정 프로그램 개발</li></ul></div></div></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-paper">
+    <h2 id="h-paper">논문</h2><div class="rows"><div><span class="k">2026</span><div><span class="t">Feature Selection Methodology Based on Explainable AI: Application in Predicting Extubation Success in the Intensive Care Unit</span><ul><li>Scientific Reports 16(1), 26582 (SCI(E), 1저자)</li><li>SHAP·LIME·LRP 통합 변수 선택법, ICU 인공호흡기 이탈 예측</li></ul></div></div><div><span class="k">2024</span><div><span class="t">Machine learning-based diagnostic model for stroke in non-neurological intensive care unit patients with acute neurological manifestations</span><ul><li>Scientific Reports 14(1), 29610 (SCI(E), 1저자)</li><li>비신경계 ICU 환자 뇌졸중 진단 모델, 내부·외부 기관 검증</li><li>미국 샌디에이고 NCS Annual Meeting 2024 단독 참석, 포스터 직접 제작·발표</li></ul></div></div><div><span class="k">2024</span><div><span class="t">Predicting Endotracheal Intubation Needs in Neonatal Intensive Care Unit: A Multimodal Approach</span><ul><li>IEEE, 2024 ITC-CSCC (공동저자)</li><li>NICU 임상정보·생체신호 기반 기관내삽관 필요성 예측</li><li>일본 오키나와 ITC-CSCC 2024 참석</li></ul></div></div><div><span class="k">2024</span><div><span class="t">퇴적물 공극수내 O2, Fe2+, Mn2+ 및 HS- 센싱을 위한 금아말감 미세전극 개발</span><ul><li>한국물환경학회지 38(2), 103~112 (공동저자)</li><li>퇴적물 공극수 깊이별 센싱 시스템 개발</li></ul></div></div></div>
+  </section>
+
+  <section class="two">
+    <div class="sec"><h2>기술 스택</h2>
+      <div class="skills"><div><span class="k">Programming</span><span class="v">Python, SQL, C</span></div><div><span class="k">Data Analysis</span><span class="v">Pandas, NumPy, SciPy, 통계 분석</span></div><div><span class="k">ML / DL</span><span class="v">Scikit-learn, TensorFlow, PyTorch, XGBoost, CatBoost, TabNet, ResUNet, YOLO</span></div><div><span class="k">Explainable AI</span><span class="v">SHAP, LIME, LRP</span></div><div><span class="k">Visualization</span><span class="v">Tableau, Streamlit</span></div><div><span class="k">Collaboration</span><span class="v">GitHub, Notion, Slack, ChatGPT, Claude</span></div></div>
+    </div>
+    <div class="sec">
+      <h2>학력</h2>
+      <div class="rows">
+        <div><span class="k">졸업</span><div><span class="t">고려대학교(세종) 전자 및 정보공학과</span><ul><li>학점 3.55 / 4.5, 전공 3.96 / 4.5</li></ul></div></div>
+      </div>
+      <h2 style="margin-top:12px">수상 · 어학</h2><div class="rows"><div><span class="k">2024.11</span><div><span class="t">디지털 바이오 데이터 분석 경진대회 은상</span><ul><li>충북대학교</li></ul></div></div><div><span class="k">2020</span><div><span class="t">실전문제연구단 최우수상</span><ul><li>고려대학교 산학교육센터</li></ul></div></div><div><span class="k">2026.03</span><div><span class="t">OPIc IH</span></div></div></div>
+    </div>
+  </section>
+  <p class="foot">2026.10 기준</p>
+</div>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="이미지 확대"><button type="button" id="lb-x">닫기</button><img id="lb-img" alt=""><p id="lb-cap"></p></div>
+
+<script>
+(function () {
+  var list = document.getElementById('proj-list');
+  var items = Array.prototype.slice.call(list.querySelectorAll('details.proj'));
+  var toggleAll = document.getElementById('toggle-all');
+  var chips = document.querySelectorAll('.chip-btn');
+  function visibleItems() { return items.filter(function (d) { return !d.hidden; }); }
+  function syncToggleLabel() {
+    var v = visibleItems();
+    var allOpen = v.length > 0 && v.every(function (d) { return d.open; });
+    toggleAll.textContent = allOpen ? '모두 접기' : '모두 펼치기';
+  }
+  toggleAll.addEventListener('click', function () {
+    var v = visibleItems(); var allOpen = v.every(function (d) { return d.open; });
+    v.forEach(function (d) { d.open = !allOpen; }); syncToggleLabel();
+  });
+  items.forEach(function (d) { d.addEventListener('toggle', syncToggleLabel); });
+  chips.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === b ? 'true' : 'false'); });
+      items.forEach(function (d) {
+        var doms = (d.getAttribute('data-domain') || '').split(' ');
+        d.hidden = !(f === 'all' || doms.indexOf(f) !== -1);
+      });
+      syncToggleLabel();
+    });
+  });
+  var id = (location.hash || '').replace('#', '');
+  if (id) { var t = document.getElementById(id); if (t && t.tagName === 'DETAILS') { t.open = true; setTimeout(function () { t.scrollIntoView(); }, 50); } }
+
+  var btn = document.getElementById('copy-mail'); var mail = document.getElementById('mail');
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = '복사됨'; setTimeout(function () { btn.textContent = '복사'; }, 1500); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(mail); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(mail.textContent).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap'), lastBtn = null;
+  function openLb(b) { var im = b.querySelector('img'); lastBtn = b; lbImg.src = im.getAttribute('src'); lbImg.alt = im.alt; lbCap.textContent = b.getAttribute('data-cap') || ''; lb.hidden = false; document.getElementById('lb-x').focus(); }
+  function closeLb() { lb.hidden = true; lbImg.removeAttribute('src'); if (lastBtn) lastBtn.focus(); }
+  document.addEventListener('click', function (e) { var b = e.target.closest ? e.target.closest('.zoom') : null; if (b) { openLb(b); } });
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+})();
+</script>
+
+</body>
+</html>
